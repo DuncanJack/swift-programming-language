@@ -67,6 +67,78 @@ if let bounds = minMaxNil(array: [1,2,3]) {
 // Function Argument Labels and Parameter Names
 // -------------------------------------------------------------------------------
 
+func someFunction(firstParamaterName: Int, secondParameterName: Int) {
+}
+
+someFunction(firstParamaterName: 1, secondParameterName: 2)
+
+// Specifying Arguments Labels
+
+func someFunction(argumentLabel parameterName: Int) {
+    
+}
+
+someFunction(argumentLabel: 1)
+
+func greet(person:String, from hometown: String) -> String {
+    return "Hello \(person)! Glad you could visit from \(hometown)"
+}
+
+print(greet(person: "Bill", from: "Cupertino"))
+
+// Ommitting Argument Labels
+
+func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
+    
+}
+
+someFunction(1, secondParameterName: 2)
+
+func someFunction(_ firstParameterName: Int, _ secondParameterName: Int) {
+    
+}
+
+someFunction(1,2)
+
+// Default Parameter Values
+
+func someFunction(parameterWithDefault: Int = 12){
+    
+}
+
+someFunction(parameterWithDefault: 6)
+
+someFunction()
+
+// Variadic Parameters (max 1 per function)
+
+func arithmeticMean(_ numbers: Double...) -> Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+
+arithmeticMean(1,2,3)
+
+// In-Out Parameters
+
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&someInt, &anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+
+// -------------------------------------------------------------------------------
+// Function Types
+// -------------------------------------------------------------------------------
+
 
 
 
