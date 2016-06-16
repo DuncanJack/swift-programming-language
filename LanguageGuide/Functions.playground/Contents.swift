@@ -139,10 +139,69 @@ print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 // Function Types
 // -------------------------------------------------------------------------------
 
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
 
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a * b
+}
 
+// Using Function Types
 
+var mathFunction: (Int,Int) -> Int = addTwoInts
 
+print("Result: \(mathFunction(2,3))")
+
+let anotherMathFunction = addTwoInts
+
+// Function Types as Parameter Types
+
+func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+    print("Result: \(mathFunction(a,b))")
+}
+
+printMathResult(addTwoInts, 3, 5)
+
+// Function Types as Return Types
+
+func stepForward(_ input: Int) -> Int {
+    return input + 1
+}
+
+func stepBackward(_ input: Int) -> Int {
+    return input - 1
+}
+
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+    return backward ? stepBackward : stepForward
+}
+
+var currentValue = 3
+let moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+
+print("Counting to zero:")
+while currentValue != 0 {
+    print("\(currentValue)...")
+    currentValue = moveNearerToZero(currentValue)
+}
+
+// -------------------------------------------------------------------------------
+// Nested Functions
+// -------------------------------------------------------------------------------
+
+func chooseStepFunction2(backward: Bool) -> (Int) -> Int {
+    func stepForward(input: Int) -> Int { return input + 1 }
+    func stepBackward(input: Int) -> Int { return input - 1 }
+    return backward ? stepBackward : stepForward
+}
+
+var currentVal = -4
+let moveNearerToZero2 = chooseStepFunction2(backward: currentVal > 0)
+while currentVal != 0 {
+    print("\(currentVal)...")
+    currentVal = moveNearerToZero2(currentVal)
+}
 
 
 
