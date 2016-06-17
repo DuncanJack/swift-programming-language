@@ -86,10 +86,70 @@ incrementByTen()
 let alsoIncrementByTen = incrementByTen
 alsoIncrementByTen()
 
+// -------------------------------------------------------------------------------
+// Nonescaping Closures
+// -------------------------------------------------------------------------------
 
+func someFunctionWithNonEscapingClosure(closure: @noescape () -> Void) {
+    closure()
+}
 
+var completionHandlers: [() -> Void] = []
+func someFunctionWithEscapingClosure(completionHandler: () -> Void) {
+    completionHandlers.append(completionHandler)
+}
 
+class SomeClass {
+    var x = 10
+    func doSomething() {
+        // Marking a closure with @noescape lets you refer to the self implicitly within the closure.
+        // This function does not need to escape because it is called before the function returns.
+        someFunctionWithNonEscapingClosure{ x = 200 }
+        
+        // The closure needs to escape because it is called after the function returns.
+        someFunctionWithEscapingClosure{ self.x = 100 }
+    }
+}
 
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+
+completionHandlers.first?()
+print(instance.x)
+
+// -------------------------------------------------------------------------------
+// Autoclosures
+// -------------------------------------------------------------------------------
+
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+print(customersInLine.count)
+
+// Call serve with a closure.
+func serve(customer customerProvider: () -> String) {
+    print(customerProvider())
+}
+serve(customer: { customersInLine.remove(at: 0) })
+
+// Call serve as if it takes a string.
+func serve(customer customerProvider: @autoclosure () -> String) {
+    print(customerProvider())
+}
+serve(customer: customersInLine.remove(at: 0))
+
+// Escaping autoclosure
+
+var customerProviders: [() -> String] = []
+func collectCustomerProviders(_ customerProvider: @autoclosure(escaping) () -> String) {
+    customerProviders.append(customerProvider)
+}
+collectCustomerProviders(customersInLine.remove(at: 0))
+collectCustomerProviders(customersInLine.remove(at: 0))
+
+print("Collected \(customerProviders.count) closures")
+for customerProvider in customerProviders {
+    print("Now serving \(customerProvider())")
+}
 
 
 
