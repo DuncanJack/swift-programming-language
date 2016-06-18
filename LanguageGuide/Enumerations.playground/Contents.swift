@@ -140,18 +140,3 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
 }
 
 print(evaluate((product)))
-
-print(2)
-
-
-
-
-
-
-
-
-
-
-
-
-
