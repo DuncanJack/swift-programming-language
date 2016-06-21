@@ -72,26 +72,3 @@ if tenEighty === alsoTenEighty {
 // -------------------------------------------------------------------------------
 // Assignment and Copy Behavior for Strings, Arrays and Dictionaries
 // -------------------------------------------------------------------------------
-
-var s1 = "s1"
-var s2 = s1
-s1 = "s1Changed"
-print("s1: \(s1)")
-print("s2: \(s2)")
-
-var a1 = [1,2,3]
-var a2 = a1
-a1.append(contentsOf: [4])
-print(a1)
-print(a2)
-
-var d1 = ["a":"A"]
-var d2 = d1
-d1["a"] = "Changed"
-print(d1)
-print(d2)
-
-
-
-
-
