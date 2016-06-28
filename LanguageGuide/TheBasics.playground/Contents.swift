@@ -55,6 +55,36 @@ print("UInt: \(UInt.min) \(UInt.max)")
 print("Int: \(Int.min) \(Int.max)")
 
 // -------------------------------------------------------------------------------
+// Floating-Point Numbers
+// -------------------------------------------------------------------------------
+
+var myDouble:Double;
+var myFloat:Float;
+
+// -------------------------------------------------------------------------------
+// Numeric Literals
+// -------------------------------------------------------------------------------
+
+let decimalInteger = 17
+let binaryInteger = 0b10001
+let octalInteger = 0o21
+let hexadecimalInteger = 0x11
+
+let a = 1.25e+2 // 1.25 x 10^+2
+let b = 1.25e-2 // 1.25 x 10^-2
+
+let hexadecimalWithExponent1 = 0xFp+2 // 15 X 2^+2
+let hexadecimalWithExponent2 = 0xFp-2 // 15 x 2^-2
+
+let decimalDouble = 12.1875
+let exponentDouble = 1.21875e1
+let hexadecimalDouble = 0xC.3p0
+
+let paddedDouble = 000123.456
+let oneMillion = 1_000_000
+let justOverOneMillion = 1_000_000.000_000_1
+
+// -------------------------------------------------------------------------------
 // Optionals
 // -------------------------------------------------------------------------------
 
