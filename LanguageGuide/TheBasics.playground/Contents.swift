@@ -172,3 +172,31 @@ let forcedString: String! = possibleString!
 
 let assumedString: String! = "An implicitly unwrapped optional string"
 let implicitString: String = assumedString
+
+// -------------------------------------------------------------------------------
+// Error Handling
+// -------------------------------------------------------------------------------
+
+func canThrowAnError() throws {
+}
+
+do {
+    try canThrowAnError()
+} catch {
+    
+}
+
+// -------------------------------------------------------------------------------
+// Assertions
+// -------------------------------------------------------------------------------
+
+let age = 0
+assert(age >= 0, "The age cannot be less than zero")
+assert(age >= 0)
+
+
+
+
+
+
+
