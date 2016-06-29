@@ -93,6 +93,31 @@ word += "\u{301}"
 
 print("the number of characters in \(word) is \(word.characters.count)")
 
+// -------------------------------------------------------------------------------
+// Accessing and Modifying a String
+// -------------------------------------------------------------------------------
+
+// String Indices
+
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+greeting[greeting.index(after: greeting.startIndex)]
+greeting[greeting.index(before: greeting.endIndex)]
+
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+
+for index in greeting.characters.indices {
+    print("\(greeting[index]) ", terminator:"")
+}
+
+
+
+
+
+
+
+
 
 
 
