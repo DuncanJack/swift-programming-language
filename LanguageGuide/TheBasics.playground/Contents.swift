@@ -109,6 +109,39 @@ typealias AudiSample = UInt16
 var maxAmplitudeFound = AudiSample.min
 
 // -------------------------------------------------------------------------------
+// Booleans
+// -------------------------------------------------------------------------------
+
+let turnipsAreDelicious = false
+
+if turnipsAreDelicious {
+    print("Mmm ...")
+} else {
+    print("Eww ...")
+}
+
+// -------------------------------------------------------------------------------
+// Tuples
+// -------------------------------------------------------------------------------
+
+let http404Error = (404, "Not Found")
+
+let (statusCode, statusMessage) = http404Error
+print(statusCode)
+print(statusMessage)
+
+let(justTheStatusCode,_) = http404Error
+print(justTheStatusCode)
+
+print(http404Error.0)
+print(http404Error.1)
+
+let http200Status = (statusCode: 200, description: "OK")
+
+print(http200Status.statusCode)
+print(http200Status.description)
+
+// -------------------------------------------------------------------------------
 // Optionals
 // -------------------------------------------------------------------------------
 
