@@ -45,3 +45,45 @@ print("\nenumerated ...")
 for (index, value) in shoppingList.enumerated() {
     print("Item \(index): \(value)")
 }
+
+// -------------------------------------------------------------------------------
+// Sets
+// -------------------------------------------------------------------------------
+
+// Creating and Initializing an Empty Set
+
+var lettres = Set<Character>()
+lettres.insert("a")
+lettres = []
+
+// Creating a Set with an Array Literal
+
+var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
+
+// Accessing and Modifying a Set
+
+favoriteGenres.count
+favoriteGenres.isEmpty
+favoriteGenres.insert("Jazz")
+
+if let removedGenre = favoriteGenres.remove("Rock") {
+    print("removedGenre: \(removedGenre)")
+}
+
+favoriteGenres.contains("Funk")
+
+for genre in favoriteGenres {
+    print("\(genre)")
+}
+
+for genre in favoriteGenres.sorted() {
+    print("\(genre)")
+}
+
+
+
+
+
+
+
+
