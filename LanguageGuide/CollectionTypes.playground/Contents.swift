@@ -105,10 +105,51 @@ houseAnimals.isSubset(of: farmAnimals)
 farmAnimals.isSuperset(of: houseAnimals)
 farmAnimals.isDisjoint(with: cityAnimals)
 
+// -------------------------------------------------------------------------------
+// Dictionaries
+// -------------------------------------------------------------------------------
 
+// Creating an Empty Dictionary
 
+var namesOfIntegers = [Int:String]()
 
+namesOfIntegers[16] = "sixteen"
+namesOfIntegers = [:]
 
+// Creating a Dictionary with a Dictionary Literal
+
+var airports = ["YYZ":"Toronto Pearson","DUB":"Dublin"]
+
+// Accessing and Modifying a Dictionary
+
+airports.count
+airports.isEmpty
+airports["LHR"] = "London"
+airports["LHR"] = "London Heathrow"
+
+if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
+    print("The old value for DUB was \(oldValue)")
+}
+
+airports["DUB"]
+
+airports["APL"] = "Apple International"
+airports["APL"] = nil
+
+print(airports)
+
+if let removedValue = airports.removeValue(forKey: "DUB") {
+    print("removedValue: \(removedValue)")
+}
+
+// Iterating Over a Dictionary
+
+for (airportCode, airportName) in airports {
+    print("\(airportCode) \(airportName)")
+}
+
+[String](airports.keys)
+[String](airports.values)
 
 
 
