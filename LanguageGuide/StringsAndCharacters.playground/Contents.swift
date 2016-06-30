@@ -111,9 +111,58 @@ for index in greeting.characters.indices {
     print("\(greeting[index]) ", terminator:"")
 }
 
+// Inserting and Removing
 
+var wilkommen = "hello"
+wilkommen.insert("!", at:wilkommen.endIndex)
+wilkommen.insert(contentsOf:" there".characters, at: welcome.index(before: wilkommen.endIndex))
 
+wilkommen.remove(at: wilkommen.index(before: wilkommen.endIndex))
+print(wilkommen)
 
+let range = wilkommen.index(welcome.endIndex, offsetBy: -6)..<wilkommen.endIndex
+wilkommen.removeSubrange(range)
+
+// -------------------------------------------------------------------------------
+// Comparing Strings
+// -------------------------------------------------------------------------------
+
+// String and Character Equality
+
+let quotation = "We're alike"
+let sameQuotation = "We're alike"
+quotation == sameQuotation
+
+let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
+let combinedEAcuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
+eAcuteQuestion == combinedEAcuteQuestion
+
+let latinCapitalLetterA: Character = "\u{41}"
+let cyrillicCapitalLetterA: Character = "\u{0410}"
+latinCapitalLetterA == cyrillicCapitalLetterA
+
+// Prefix and Suffix Equality
+
+let romeoAndJuliet = [
+"Act 1 Scene 1",
+"Act 1 Scene 2",
+"Act 2 Scene 1",
+"Act 2 Scene 2"
+]
+
+var act1SceneCount = 0
+var scene2Count = 0
+for scene in romeoAndJuliet {
+    if scene.hasPrefix("Act 1") {
+        act1SceneCount += 1
+    }
+    if scene.hasSuffix("Scene 2") {
+        scene2Count += 1
+    }
+    
+}
+print("act1SceneCount: \(act1SceneCount)")
+print("scene2Count: \(scene2Count)")
 
 
 
