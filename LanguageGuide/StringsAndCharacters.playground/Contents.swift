@@ -164,7 +164,31 @@ for scene in romeoAndJuliet {
 print("act1SceneCount: \(act1SceneCount)")
 print("scene2Count: \(scene2Count)")
 
+// -------------------------------------------------------------------------------
+// Unicode Representations of Strings
+// -------------------------------------------------------------------------------
 
+let dogString = "Dog!!🐶"
+
+print("\nutf8")
+for codeUnit in dogString.utf8 {
+    print("\(codeUnit) ", terminator:"")
+}
+
+print("\nutf16")
+for codeUnit in dogString.utf16 {
+    print("\(codeUnit) ", terminator:"")
+}
+
+print("\nunicodeScalars")
+for scalar in dogString.unicodeScalars {
+    print("\(scalar) ", terminator:"")
+}
+
+print("\nunicodeScalars.value")
+for scalar in dogString.unicodeScalars {
+    print("\(scalar.value) ", terminator:"")
+}
 
 
 
