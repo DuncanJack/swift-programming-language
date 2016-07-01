@@ -253,8 +253,38 @@ gameLoop: while square != finalSquare {
 }
 print("Game over!")
 
+// -------------------------------------------------------------------------------
+// Early Exit
+// -------------------------------------------------------------------------------
 
+func greet(person:[String:String]){
+    guard let name = person["name"] else {
+        return
+    }
+    
+    print("Hello \(name)")
+    
+    guard let location = person["location"] else {
+        print("I hope the weather is nice near you")
+        return
+    }
+    
+    print("I hope the weather is nice in \(location)")
+}
 
+greet(person: ["name":"John"])
+
+greet(person: ["name":"Jane", "location":"Cupertino"])
+
+// -------------------------------------------------------------------------------
+// Checking API Availability
+// -------------------------------------------------------------------------------
+
+if #available(iOS 9, OSX 10.10, *) {
+    // Use iOS 9 APIs on iOS, and use OS X v10.10 APIs on OS X
+} else {
+    // Fall back to earlier iOS and OS X APIs
+}
 
 
 
