@@ -59,10 +59,30 @@ train.makeNoise()
 class Car : Vehicle {
    var gear = 1
     override var description: String{
-        return ""
+        return super.description + " in gear \(gear)"
     }
 }
 
+let car = Car()
+car.currentSpeed = 25
+car.gear = 3
+print("Car: \(car.description)")
 
+// Overriding property observers
 
+class AutomaticCar : Car {
+    override var currentSpeed: Double {
+        didSet {
+            gear = Int(currentSpeed / 10) + 1
+        }
+    }
+}
+
+let automatic = AutomaticCar()
+automatic.currentSpeed = 35
+print("AutomaticCar: \(automatic.description)")
+
+// -------------------------------------------------------------------------------
+// Preventing Overrides
+// -------------------------------------------------------------------------------
 
