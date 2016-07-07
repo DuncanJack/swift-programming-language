@@ -111,6 +111,29 @@ question.response = "I also like beets."
 // Default Initializers
 // -------------------------------------------------------------------------------
 
+class ShoppingListItem {
+    var name: String?
+    var quantity = 1
+    var purchased = false
+}
+var item = ShoppingListItem()
+
+// Memberwise Initializers for Structure Types
+
+struct Size {
+    var name: String?
+    var width = 0.0
+    var height = 0.0
+}
+_ = Size(name: "Small", width: 1, height: 1)
+
+// -------------------------------------------------------------------------------
+// Initializer Delegation for Value Types
+// -------------------------------------------------------------------------------
+
+
+
+
 
 
 
