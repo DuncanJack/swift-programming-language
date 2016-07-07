@@ -32,7 +32,7 @@ struct Celsius {
         temperatureInCelsius = (fahrenheit - 32) / 1.8
     }
     init(fromKelvin kelvin: Double){
-            temperatureInCelsius = kelvin - 273.15
+        temperatureInCelsius = kelvin - 273.15
     }
 }
 let boilingPointOfWater = Celsius(fromFahrenheit: 212)
@@ -120,23 +120,47 @@ var item = ShoppingListItem()
 
 // Memberwise Initializers for Structure Types
 
-struct Size {
+struct Shape {
     var name: String?
     var width = 0.0
     var height = 0.0
 }
-_ = Size(name: "Small", width: 1, height: 1)
+_ = Shape(name: "Small", width: 1, height: 1)
 
 // -------------------------------------------------------------------------------
 // Initializer Delegation for Value Types
 // -------------------------------------------------------------------------------
 
+struct Size {
+    var width = 0.0, height = 0.0
+}
 
+struct Point {
+    var x = 0.0, y = 0.0
+}
 
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    init() {
+    }
+    init(origin:Point, size:Size) {
+        self.origin = origin
+        self.size = size
+    }
+    init(center:Point, size: Size) {
+        let originX = center.x - (size.width / 2)
+        let originY = center.y - (size.height / 2)
+        self.init(origin: Point(x:originX,y:originY), size:size)
+    }
+}
+print(Rect())
+print(Rect(origin: Point(x:2,y:2), size: Size(width:5,height:5)))
+print(Rect(center: Point(x:4,y:4), size: Size(width:3,height:3)))
 
-
-
-
+// -------------------------------------------------------------------------------
+// Class Inheritance and Initialization
+// -------------------------------------------------------------------------------
 
 
 
