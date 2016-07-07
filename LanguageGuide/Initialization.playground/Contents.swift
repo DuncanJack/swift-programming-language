@@ -182,7 +182,22 @@ class Bicycle: Vehicle {
 let bicycle = Bicycle()
 print("Bicycle: \(bicycle.description)")
 
-// Automatic Initializer Inheritance
+// Designated and Convenience Initializers in Action
+
+class Food {
+    var name: String
+    init(name: String){
+        self.name = name
+    }
+    convenience init() {
+        self.init(name: "Unnamed")
+    }
+}
+let namedMeat = Food(name: "Bacon")
+print(namedMeat.name)
+
+let mysteryMeat = Food()
+print(mysteryMeat.name)
 
 
 
