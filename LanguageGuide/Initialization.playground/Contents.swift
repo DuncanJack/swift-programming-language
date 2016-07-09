@@ -375,6 +375,26 @@ class Failable {
 let failed = Failable(name: "")
 let failable = Failable(name: "name")
 
+// -------------------------------------------------------------------------------
+// Required Initializers
+// -------------------------------------------------------------------------------
+
+class SomeClass {
+    required init() {
+        
+    }
+}
+
+class SomeSubClass: SomeClass {
+    
+}
+
+_ = SomeSubClass()
+
+
+
+
+
 
 
 
