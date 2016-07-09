@@ -282,10 +282,53 @@ if fahrenheitUnit != nil {
 
 let unknownUnit = TemperatureUnit(symbol: "X")
 if unknownUnit == nil {
-    print("Initialization failed")
+    print("Initialization failed.")
 }
 
+// Failable Initializers for Enumerations with Raw Values
 
+enum TempUnit:Character {
+    case kelvin = "K", celsius = "C", fahrenheit = "F"
+}
+
+if var fahrenheitUnit = TempUnit(rawValue: "F") {
+    print("Initialization succeeded.")
+}
+
+if var unknownUnit = TempUnit(rawValue: "U") {} else {
+    print("Initialization failed.")
+}
+
+// Propagation of Initialization Failure
+
+class Product {
+    let name: String
+    init?(name:String){
+        if name.isEmpty { return nil}
+        self.name = name
+    }
+}
+
+class CartItem: Product {
+    let quantity: Int
+    init?(name: String, quantity: Int){
+        if quantity < 1 { return nil }
+        self.quantity = quantity
+        super.init(name:name)
+    }
+}
+
+if let twoSocks = CartItem(name: "sock", quantity: 2) {
+    print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+}
+
+if let zeroShirts = CartItem(name: "shirt", quantity: 0) {} else {
+    print("Unable to initialize zero shirts")
+}
+
+if let oneUnnamed = CartItem(name: "", quantity: 1) {} else {
+    print("Unable to initialize one unnamed product")
+}
 
 
 
