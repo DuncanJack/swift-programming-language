@@ -330,6 +330,52 @@ if let oneUnnamed = CartItem(name: "", quantity: 1) {} else {
     print("Unable to initialize one unnamed product")
 }
 
+// Overriding a Failable Initializer
+
+class Document {
+    var name: String?
+    init() {}
+    init?(name: String){
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
+let document = Document()
+
+class AutomaticallyNamedDocument: Document {
+    override init () {
+        super.init()
+        self.name = "[Untitled]"
+    }
+    override init(name: String) {
+        super.init()
+        if name.isEmpty {
+            self.name = "[Untitled]"
+        } else {
+            self.name = name
+        }
+    }
+}
+
+class UntitledDocument: Document {
+    override init() {
+        super.init(name: "[Untitled]")! // Note the ! operator
+    }
+}
+
+// The init! Failable Initializer
+
+class Failable {
+    var name: String!
+    init!(name: String){
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
+let failed = Failable(name: "")
+let failable = Failable(name: "name")
+
+
 
 
 
