@@ -137,13 +137,49 @@ var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello world")
 print(paragraph!.asHTML())
 paragraph = nil
 
+// -------------------------------------------------------------------------------
+// Resolving Strong Reference Cycles for Closures
+// -------------------------------------------------------------------------------
 
+// Defining a Capture List
 
+class Container{
+    lazy var someClosure: (Int, String) -> String = {
+        [unowned self] (index: Int, stringToProcess: String) -> String in
+        return stringToProcess
+    }
+    lazy var otherClosure: () -> String = {
+        [unowned self] in
+            return ""
+    }
+}
 
+// Weak and Unowned References
 
+class Element {
+    let name: String
+    let text: String?
+    lazy var asHTML: () -> String = {
+        // Capture self as an unowned reference rather than a strong reference
+        [unowned self] in
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        } else {
+            return "<\(self.name) />"
+        }
+    }
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
 
-
-
+var div: Element? = Element(name: "div", text: "hello world")
+print(div!.asHTML())
+div = nil
 
 
 
