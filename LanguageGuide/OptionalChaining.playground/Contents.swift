@@ -123,14 +123,32 @@ if john.residence?.printNumberOfRooms() != nil {
 // Accessing Subscripts Through Optional Chaining
 // -------------------------------------------------------------------------------
 
+if let firstRoomName = john.residence?[0].name {
+    print("The first room name is \(firstRoomName).")
+} else {
+    print("Unable to retrieve the first room name.")
+}
 
+john.residence?[0] = Room(name: "Bathroom")
 
+let johnsHouse = Residence()
+johnsHouse.rooms.append((Room(name: "Living Room")))
+johnsHouse.rooms.append((Room(name: "Kitchen")))
+john.residence = johnsHouse
 
+if let firstRoomName = john.residence?[0].name {
+    print("The first room name is \(firstRoomName).")
+} else {
+    print("Unable to retrieve the first room name.")
+}
 
+// Accessing Subscripts of Optional Type
 
-
-
-
+var testScores = ["Dave": [86, 82, 84], "Bev": [79, 94, 81]]
+testScores["Dave"]?[0] = 91
+testScores["Bev"]?[0] += 1
+testScores["Brian"]?[0] = 72
+print(testScores)
 
 
 
