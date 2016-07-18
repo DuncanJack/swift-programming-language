@@ -171,9 +171,19 @@ if let johnsStreet = john.residence?.address?.street {
     print("Unable to retrieve the address.")
 }
 
+// -------------------------------------------------------------------------------
+// Chaining on Methods with Optional Return Values
+// -------------------------------------------------------------------------------
 
+if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
+    print("John's building identifier is \(buildingIdentifier).")
+}
 
-
-
-
+if let beginsWithThe = john.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
+    if beginsWithThe {
+        print("John's building identifier begins with \"The\".")
+    } else {
+        print("John's building identifier doesnot begin with \"The\".")
+    }
+}
 
