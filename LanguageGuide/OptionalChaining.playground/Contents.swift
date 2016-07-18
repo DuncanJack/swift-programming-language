@@ -150,7 +150,26 @@ testScores["Bev"]?[0] += 1
 testScores["Brian"]?[0] = 72
 print(testScores)
 
+// -------------------------------------------------------------------------------
+// Linking Multiple Levels of Chaining
+// -------------------------------------------------------------------------------
 
+if let johnsStreet = john.residence?.address?.street {
+    print("John's street name is \(johnsStreet).")
+} else {
+    print("Unable to retrieve the address.")
+}
+
+let johnsAddress = Address()
+johnsAddress.buildingName = "The Larches"
+johnsAddress.street = "Laurel Street"
+john.residence?.address = johnsAddress
+
+if let johnsStreet = john.residence?.address?.street {
+    print("John's street name is \(johnsStreet).")
+} else {
+    print("Unable to retrieve the address.")
+}
 
 
 
