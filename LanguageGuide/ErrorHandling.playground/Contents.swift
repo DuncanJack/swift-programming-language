@@ -91,10 +91,44 @@ do {
 
 // Converting Errors to Optional Values
 
+func someThrowingFunction() throws -> Int {
+    throw VendingMachineError.outOfStock
+}
 
+let x = try? someThrowingFunction()
 
+let y: Int?
+do {
+    y = try someThrowingFunction()
+} catch {
+    y = nil
+}
 
+print(y)
 
+class Data {}
+
+func fetchData() -> Data? {
+    func fetchDataFromDisk() throws -> Data? { return nil }
+    func fetchDataFromServer() throws -> Data? { return nil }
+    
+    if let data = try? fetchDataFromDisk() { return data }
+    if let data = try? fetchDataFromServer() { return data }
+    return nil
+}
+
+print(fetchData())
+
+// Disabling Error Propogation
+
+func load(_ shouldThrow:Bool) throws -> Data? {
+    if(shouldThrow) {
+        throw VendingMachineError.outOfStock
+    }
+    return Data()
+}
+
+let data = try! load(false)
 
 
 
