@@ -49,3 +49,7 @@ for item in library {
 }
 
 print("Media Library contains \(movieCount) movies and \(songCount) songs")
+
+// -------------------------------------------------------------------------------
+// Downcasting
+// -------------------------------------------------------------------------------
