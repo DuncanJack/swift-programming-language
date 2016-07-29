@@ -130,8 +130,24 @@ func load(_ shouldThrow:Bool) throws -> Data? {
 
 let data = try! load(false)
 
+// -------------------------------------------------------------------------------
+// Specifying Cleanup Actions
+// -------------------------------------------------------------------------------
 
-
+func processFile(filename: String) throws {
+    func exists(filename: String) -> Bool { return true }
+    func open(){}
+    func close() {}
+    if exists(filename: filename) {
+        // Open the file.
+        // defer gets exectuted at the end of the scope.
+        defer {
+            close()
+        }
+        // Do something with the file.
+        // defer gets executed here, at the end of teh scope.
+    }
+}
 
 
 
